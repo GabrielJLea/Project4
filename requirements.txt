@@ -1,0 +1,7 @@
+groq
+beautifulsoup4
+lxml
+python-dotenv
+nltk
+PyPDF2
+requests
