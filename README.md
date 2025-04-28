@@ -7,7 +7,7 @@ Gif showing how to run:
 
 ![example](Video/LLM.gif)
 
-Text examples
+Text examples:
 
 ```
 $ python docchat.py decleration.txt
