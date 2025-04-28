@@ -295,27 +295,7 @@ def chat_bot(document):
             
             
 def find_relevant_chunks(chunks, text, num_chunks, language="en_core_web_sm"):
-    """
-    Find the most relevant chunks from the text based on the query.
-
-    Args:
-        chunks (list): List of text chunks to compare against the query.
-        text (str): The query or main text to compare against.
-        num_chunks (int): The number of top relevant chunks to return.
-        language (str): The spaCy language model to use (default is "en_core_web_sm" for English).
-
-    Returns:
-        list: The top `num_chunks` most relevant chunks.
-
-    Example:
-    >>> chunks = [
-    >>>     "The quick brown fox jumps over the lazy dog.",
-    >>>     "The fox is fast and clever."
-    >>> ]
-    >>> text = "fox fast"
-    >>> find_relevant_chunks(chunks, text, 2, language="en_core_web_sm")
-    ['The quick brown fox jumps over the lazy dog.', 'The fox is fast and clever.']
-    """
+    
     chunks_scored = {}
     print('PROCESSING DOCUMENT:')
 
