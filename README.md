@@ -3,9 +3,11 @@
 
 ## Examples
 
-Gif shwoing how to run
+Gif shwoing how to run:
+
 ![example](Video/LLM.gif)
 
+Text examples
 ```
 $ python docchat.py decleration.txt
 
