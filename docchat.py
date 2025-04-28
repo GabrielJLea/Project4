@@ -196,19 +196,6 @@ def score_chunk(chunk: str, query: str) -> float:
         score = len(chunk & query) / len(chunk | query)
     return score
 
-def preprocess(text, language="en_core_web_sm"):
-    """
-
-    """
-    
-    nlp = spacy.load(language)  # Load the specified language model
-    doc = nlp(text.lower())     # Convert text to lowercase and process it
-    
-    # Create a set of lemmatized, non-stop, alphabetic tokens
-    return set(
-        token.lemma_ for token in doc
-        if token.is_alpha and not token.is_stop
-    )
 
 
 def chat_bot(document):
@@ -294,22 +281,37 @@ def chat_bot(document):
             })
             
             
-def find_relevant_chunks(chunks, text, num_chunks, language="en_core_web_sm"):
-    
-    chunks_scored = {}
-    print('PROCESSING DOCUMENT:')
+def find_relevant_chunks(text, query, num_chunks=5):
+    """
+    This function will: 
+    1) split the document into chunks 
+    2) compute the score for each of these chunks
+    3) return the `num_chunks` chunks that have the largest score
 
-    query_words = preprocess(text, language)  # Pass the language model name, not nlp
+    >>> text = "The sun is bright and hot. Bananas are yellow. The red car speeds by."
+    >>> query = "How hot is the sun?"
+    >>> find_relevant_chunks(text, query, num_chunks=1)
+    ['The sun is bright and hot. Bananas are yellow. The']
+    """
+    # Split the text into chunks by words
+    chunks = chunk_text_by_words(text, max_words=10, overlap=5)
 
-    for i, chunk in enumerate(chunks):
-        print(f'\rProgress: ({i}/{len(chunks)})', end="", flush=True)
-        chunk_words = preprocess(chunk, language)  # Pass the language model name, not nlp
-        chunks_scored[chunk] = score_chunk(chunk_words, query_words)
+    # Use accumulator pattern to gather scored chunks
+    scored_chunks = []
+    for chunk in chunks:
+        # Convert chunk and query to sets of words for scoring
+        chunk_words = set(chunk.lower().split())
+        query_words = set(query.lower().split())
+        
+        # Compute the score for the chunk
+        score = score_chunk(chunk_words, query_words)
+        scored_chunks.append((chunk, score))
 
-    top_chunks = sorted(chunks_scored.items(), key=lambda item: item[1], reverse=True)[:num_chunks]
-    top_keys = [k for k, v in top_chunks]
-    return top_keys
-    
+    # Sort the chunks by score and slice to get the top `num_chunks`
+    scored_chunks.sort(key=lambda x: x[1], reverse=True)
+    top_chunks = [chunk for chunk, _ in scored_chunks[:num_chunks]]
+
+    return top_chunks
 
 if __name__ == '__main__':
     client = groq.Groq()
