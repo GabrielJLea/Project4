@@ -288,11 +288,12 @@ def find_relevant_chunks(text, query, num_chunks=5):
     2) compute the score for each of these chunks
     3) return the `num_chunks` chunks that have the largest score
 
-    >>> text = "The sun is bright and hot. Bananas are yellow. The red car speeds by."
-    >>> query = "How hot is the sun?"
-    >>> find_relevant_chunks(text, query, num_chunks=1)
-    ['The sun is bright and hot. Bananas are yellow. The']
+    >>> text = "The quick brown fox jumps over the lazy dog. The fox is fast. The dog is lazy."
+    >>> query = "fast fox"
+    >>> find_relevant_chunks(text, query, num_chunks=2)
+    ['fox is fast. The dog is lazy.', 'The quick brown fox jumps over the lazy dog. The']
     """
+
     # Split the text into chunks by words
     chunks = chunk_text_by_words(text, max_words=10, overlap=5)
 
