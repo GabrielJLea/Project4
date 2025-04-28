@@ -1,6 +1,20 @@
 # docchat
 ![Tests](https://github.com/GabrielJLea/Project4/actions/workflows/tests.yml/badge.svg)
 
+DocChat is a chatbot that allows users to ask questions and engage in continuous conversations about documents.
+
+## Supported Document Types:
+- HTML files
+- PDFs
+- Webpages
+- Images
+
+## Requirements
+
+```
+$ pip3 install -r requirements.txt
+```
+
 ## Examples
 
 Gif showing how to run:
