@@ -16,6 +16,8 @@ DOCCHAT: This document appears to be a collection of species profiles, highlight
 docchat> tell me about the dolphin in this document
 DOCCHAT: There is no mention of a dolphin in this document.
 
+```
+
 **Supported Document Types:**
 - HTML files
 - PDFs
@@ -25,6 +27,7 @@ DOCCHAT: There is no mention of a dolphin in this document.
 ## Installation
 
 Install the dependencies with the following line:
+
 ```
 $ pip3 install -r requirements.txt
 ```
