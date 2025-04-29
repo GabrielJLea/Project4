@@ -8,7 +8,7 @@ DocChat is a chatbot that allows users to ask questions and engage in continuous
 Text examples:
 
 ```
-$ python docchat.py animals.txt
+$ python docchat.py decleration.txt
 
 docchat> what is this document about
 DOCCHAT: This document appears to be a collection of species profiles, highlighting unique and interesting facts about five different animals: the Peregrine Falcon, Axolotl, Quokka, Mantis Shrimp, and Orangutan.
@@ -27,4 +27,9 @@ DOCCHAT: There is no mention of a dolphin in this document.
 Install the dependencies with the following line:
 ```
 $ pip3 install -r requirements.txt
+<<<<<<< HEAD
 ```
+=======
+'''
+
+>>>>>>> 608d9bf066222db69ae6217c6b58f333054d8aa4
