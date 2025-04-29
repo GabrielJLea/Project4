@@ -27,9 +27,4 @@ DOCCHAT: There is no mention of a dolphin in this document.
 Install the dependencies with the following line:
 ```
 $ pip3 install -r requirements.txt
-<<<<<<< HEAD
 ```
-=======
-'''
-
->>>>>>> 608d9bf066222db69ae6217c6b58f333054d8aa4
