@@ -24,7 +24,7 @@ Gif showing how to run:
 Text examples:
 
 ```
-$ python docchat.py decleration.txt
+$ python docchat.py animals.txt
 
 docchat> what is this document about
 DOCCHAT: This document appears to be a collection of species profiles, highlighting unique and interesting facts about five different animals: the Peregrine Falcon, Axolotl, Quokka, Mantis Shrimp, and Orangutan.
