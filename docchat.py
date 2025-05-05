@@ -16,10 +16,29 @@ load_dotenv()
 
 
 def encode_image(image_path):
-  with open(image_path, "rb") as image_file:
-    return base64.b64encode(image_file.read()).decode('utf-8')
+    '''
+
+    >>> encode_image('docs/hello.pdf')
+    'Document not found'
+    
+     
+    '''
+
+
+
+    try:
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode('utf-8')
+    except FileNotFoundError:
+        return 'Document not found'
+
+    
 
 def extract_text_from_pdf(pdf_path):
+    '''
+    >>> load_text('docs/Not.html')
+    Invalid document
+    '''
 
     text = textract.process(pdf_path, encoding='utf-8')
     return text.decode('utf-8')
@@ -160,21 +179,9 @@ def chunk_text_by_words(text, max_words=5, overlap=2):
 
 import spacy
 
-def load_spacy_model(language: str):
-    """
-    Loads a spaCy model for the specified language.
-    """
-    LANGUAGE_MODELS = {
-        'french': 'fr_core_news_sm',
-        'german': 'de_core_news_sm',
-        'spanish': 'es_core_news_sm',
-        'english': 'en_core_web_sm',
-    }
 
-    if language not in LANGUAGE_MODELS:
-        raise ValueError(f"Unsupported language: {language}")
 
-    return spacy.load(LANGUAGE_MODELS[language])
+
 
 
 def score_chunk(chunk: str, query: str) -> float:
